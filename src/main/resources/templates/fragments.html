@@ -27,5 +27,20 @@
         </div>
     </div>
 
+    <div th:fragment="loop-jobs">
+        <div th:if="${jobs} and ${jobs.size()}">
+            <h4 th:text="${jobs.size()} + ' Result(s)'">0 Results</h4>
+
+            <table class="job-listing" th:each="job : ${jobs}">
+                <tr th:each="field : ${job}">
+                    <td th:text="${#strings.capitalizeWords(field.key)}"></td>
+                    <td th:text="${field.value}"></td>
+                </tr>
+            </table>
+        </div>
+
+        <h4 th:unles="${jobs} and ${jobs.size()}">0 Result(s)</h4>
+    </div>
+
 </body>
 </html>
